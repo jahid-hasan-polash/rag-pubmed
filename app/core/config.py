@@ -7,8 +7,8 @@ class Settings(BaseSettings):
     DESCRIPTION: str = "Retrieval-Augmented Generation for PubMed documents"
     
     # Embedding settings
-    EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
-    EMBEDDING_DIMENSION: int = 384
+    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"  # SentenceTransformers model
+    EMBEDDING_DIMENSION: int = 384  # Dimension for this model
     
     # Vector store settings
     VECTOR_STORE_PATH: str = "data/processed/vector_store"

@@ -1,12 +1,15 @@
 fastapi==0.95.0
 uvicorn==0.21.1
 pydantic==1.10.7
-sentence-transformers==2.2.2
+sentence-transformers==2.0.0  # Earlier version with more stable dependencies
+huggingface-hub==0.4.0        # This version has the cached_download function
+transformers==4.16.2          # Compatible version
+torch==1.10.2                 # Compatible version
 faiss-cpu==1.7.4
 python-multipart==0.0.6
-numpy==1.24.3
+numpy==1.23.5
 requests==2.28.2
 pytest==7.3.1
 httpx==0.24.0
-openai==0.27.6  # For GPT integration
+openai==0.27.6
 python-dotenv==1.0.0

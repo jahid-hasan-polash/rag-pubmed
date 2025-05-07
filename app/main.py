@@ -73,6 +73,26 @@ async def startup_event():
     # Check if OpenAI API key is set
     if not settings.OPENAI_API_KEY and not os.environ.get("OPENAI_API_KEY"):
         logger.warning("OPENAI_API_KEY not set. LLM functionality will be limited.")
+    
+    # Load initial documents if vector store is empty
+    try:
+        # Import here to avoid circular imports
+        from app.core.dependencies import get_document_service
+        
+        # Check if documents already exist in vector store
+        document_service = get_document_service()
+        vector_store = document_service.vector_store
+        
+        if len(vector_store) == 0:
+            logger.info("Vector store is empty. Loading initial documents...")
+            
+            # Import and use the existing function from your script
+            from app.scripts.load_initial_documents import ingest_initial_documents
+            ingest_initial_documents()
+        else:
+            logger.info(f"Vector store already contains {len(vector_store)} documents. Skipping initial load.")
+    except Exception as e:
+        logger.error(f"Error loading initial documents: {e}")
 
 
 @app.on_event("shutdown")
