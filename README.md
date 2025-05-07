@@ -43,7 +43,7 @@ The application follows a modular architecture with the following main component
 
 3. Build and start the Docker container:
    ```bash
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
 
 4. The API will be available at http://localhost:8000
