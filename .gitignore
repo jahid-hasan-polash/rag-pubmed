@@ -43,7 +43,6 @@ ENV/
 *.bin
 *.vec
 *.model
-models/
 embeddings/
 
 # Data files
