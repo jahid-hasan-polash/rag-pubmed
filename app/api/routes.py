@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from typing import List
 import time
 from app.models.document import DocumentInput, IngestResponse
-from app.models.request import QueryRequest, BatchIngestRequest
+from app.models.request import QueryRequest
 from app.models.response import QueryResponse
 from app.services.retrieval_service import RetrievalService
 from app.core.dependencies import get_retrieval_service
@@ -32,30 +32,6 @@ async def ingest_documents(
     
     return IngestResponse(
         status="success",
-        document_ids=document_ids,
-        message=f"Successfully ingested {len(document_ids)} documents in {processing_time:.2f} seconds"
-    )
-
-
-@router.post("/batch-ingest", response_model=IngestResponse)
-async def batch_ingest_documents(
-    request: BatchIngestRequest,
-    retrieval_service: RetrievalService = Depends(get_retrieval_service)
-):
-    """
-    Batch ingest multiple documents at once.
-    
-    Documents should be provided as a list of dictionaries with 'title', 'content', and optional 'metadata'.
-    """
-    if not request.documents:
-        raise HTTPException(status_code=400, detail="No documents provided")
-    
-    start_time = time.time()
-    document_ids = retrieval_service.document_service.ingest_documents(request.documents)
-    processing_time = time.time() - start_time
-    
-    return IngestResponse(
-        status="success", 
         document_ids=document_ids,
         message=f"Successfully ingested {len(document_ids)} documents in {processing_time:.2f} seconds"
     )

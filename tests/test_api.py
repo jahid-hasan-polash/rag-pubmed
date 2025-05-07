@@ -28,27 +28,6 @@ def test_ingest_endpoint():
     assert len(response.json()["document_ids"]) > 0
 
 
-def test_batch_ingest_endpoint():
-    """Test the batch document ingest endpoint."""
-    request = {
-        "documents": [
-            {
-                "title": "Test Document 1",
-                "content": "This is the first test document for batch ingestion."
-            },
-            {
-                "title": "Test Document 2",
-                "content": "This is the second test document for batch ingestion."
-            }
-        ]
-    }
-    
-    response = client.post("/api/batch-ingest", json=request)
-    assert response.status_code == 200
-    assert response.json()["status"] == "success"
-    assert len(response.json()["document_ids"]) == 2
-
-
 def test_query_endpoint():
     """Test the query endpoint."""
     # First ingest a document

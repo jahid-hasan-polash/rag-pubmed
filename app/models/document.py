@@ -16,7 +16,10 @@ class Document(BaseModel):
 
 
 class DocumentInput(BaseModel):
-    """Model for document ingestion requests."""
+    """
+    Model for document ingestion requests.
+    Note: Document ID will be automatically generated during ingestion.
+    """
     title: str
     content: str
     metadata: Optional[Dict] = Field(default_factory=dict)

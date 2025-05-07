@@ -132,7 +132,7 @@ class LLMService:
         """
         return f"""Question: {query}
 
-Context information from relevant documents:
-{context}
+                Context information from relevant documents:
+                {context}
 
-Please answer the question based on the context information provided above."""
+                Please answer the question based on the context information provided above."""

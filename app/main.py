@@ -51,7 +51,6 @@ async def root():
         "docs": "/docs",
         "endpoints": {
             "ingest": "/api/ingest",
-            "batch_ingest": "/api/batch-ingest",
             "query": "/api/query"
         }
     }
