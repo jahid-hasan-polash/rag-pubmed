@@ -32,7 +32,7 @@ The application follows a modular architecture with the following main component
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/rag-pubmed.git
+   git clone https://github.com/jahid-hasan-polash/rag-pubmed
    cd rag-pubmed
    ```
 
